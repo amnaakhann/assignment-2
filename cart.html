@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+      
+    
+    <link rel="stylesheet" href="./styles.css">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+</head>
+<style>
+
+    
+
+#deleteBtn{
+padding: 3px 9px;
+border: 2px solid gray;
+background-color: rgb(26, 0, 0) !important;
+color: white;
+    }
+    
+
+  
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-secondary p-2 border border-1">
+    <div  class="container-fluid d-flex justify-content-between">
+        <div id="logoo">
+        <a class="navbar-brand fw-bold" style="font-family: 'Times New Roman', Times, serif; width: 100px;" href="#">My Library</a>
+    </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse hii" id="navbarSupportedContent " style="background-color: rgb(241, 135, 241)">
+        <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0">
+          <li class="nav-item p-2 px-4">
+            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+          </li>
+          
+          <li class="nav-item p-2 px-4 dropdown">
+            <a class="nav-link " href="./categories.html" >
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              <!-- Categories will be dynamically added here using JavaScript -->
+            </ul>
+          </li>
+          
+          <li class="nav-item p-2 px-4">
+            <a class="nav-link" href="./cart.html">Cart 
+          <span style="margin-left: 7px; color: rgb(103, 0, 0);" id="cartCount">&nbsp;0</span>
+
+            </a>
+          </li>
+
+          <li class="nav-item p-2 px-4">
+            <a class="nav-link" href="./contact.html">Contact</a>
+          </li>                           
+         </ul>
+    </div>
+    </div>
+  </nav>
+
+      <div class="container mt-5">
+        <div class="row">
+            <div class="container">
+                <h3 class="text-capitalize text-center pb-5">Cart Details</h3>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Book Name</th>
+                      <th>Amount</th>
+                      <th>Price</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cartItemsContainer">
+                    <!-- Cart items will be displayed here -->
+                  </tbody>
+                </table>
+                <span id="cartSummary">
+                  <span>
+                    Total item
+                  <p id="Total-items"></p>
+                  </span>
+
+                  <span>
+                    total price
+                  <p id="Total-price"></p>
+                </span>
+                </span>
+                <button class="btn btn-danger ">Proceed to Payment</button>
+            </div>
+      
+          
+             
+        </div>
+        
+      </div>
+
+ 
+<footer class="footer text-center bg-dark-subtle p-4 mt-4 text-dark">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>About Us</h5>
+        <p>Your Website is dedicated to providing quality content and services to our users. Explore and enjoy!</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html" target="_blank">Home</a></li>
+          <li><a href="categories.html" target="_blank">Services</a></li>
+          <li><a href="contact.html" target="_blank">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Contact Us</h5>
+        <p><strong>Email:</strong>amnak6303@gmail.com</p>
+        <p><strong>Phone:</strong> +92 3171569002</p>
+      </div>
+    </div>
+    <hr class="my-4">
+    <p> 2023 Your Website. All rights reserved. | Designed by <a href="https://yourwebdesigner.com" class="text-light" target="_blank">Amna khan</a></p>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+        <!-- <script src="./categorty.js"></script> -->
+        <!-- <script src="./cartIncrementAndModel.js"></script> -->
+        <!-- <script src="./cart.js"></script> -->
+
+        <script>
+            // Function to get the cart count from localStorage
+    function getCartCount() {
+      return localStorage.getItem('cartCount') || 0;
+    }
+
+    // Function to update the cart count element in the HTML
+    function updateCartCount() {
+      const cartCountElement = document.getElementById("cartCount");
+      cartCountElement.textContent = getCartCount().toString();
+    }
+
+    // Function to set the cart count in localStorage
+    function setCartCount(count) {
+      localStorage.setItem('cartCount', count);
+    }
+
+    // Function to get the cart items from localStorage
+    function getCartItems() {
+      return JSON.parse(localStorage.getItem('cartItems')) || [];
+    }
+
+    // Function to update the cart items in localStorage
+    function setCartItems(items) {
+      localStorage.setItem('cartItems', JSON.stringify(items));
+    }
+
+    // Function to display the cart items in the HTML
+    function displayCartItems() {
+      const cartItemsContainer = document.getElementById("cartItemsContainer");
+      cartItemsContainer.innerHTML = ""; // Clear the container before updating
+
+      const cartItems = getCartItems();
+
+      // Loop through each item in the cart and display its details
+      cartItems.forEach(item => {
+        const itemRow = document.createElement("tr");
+        itemRow.innerHTML = `
+        <td>
+            <button id="deleteBtn" onclick="deleteCartItem(${item.id})">Remove</button>
+          </td>
+        <td >${item.title}<span> ----by ${item.author}</span></td>
+          
+          
+          <td><div class="quantity">
+          <span>${item.quantity}</span>
+           </div>
+           </td>
+           <td>${'$' + item.price.toFixed(2)}</td>
+          <td>${'$' + (item.price * item.quantity)}</td>
+          
+        `;
+        cartItemsContainer.appendChild(itemRow);
+      });
+    }
+
+    // Function to add an item to the cart
+    function addToCart(bookId) {
+      // Assuming you have a way to fetch the book data from book.json
+      // For example, using fetch API
+      fetch('./books.json')
+        .then(response => response.json())
+        .then(books => {
+          // Find the book with the matching ID
+          const book = books.find(book => book.id === bookId);
+          
+
+          if (book) {
+            // Get the current cart items from localStorage
+            const cartItems = getCartItems();
+
+            // Check if the book is already in the cart
+            const existingItem = cartItems.find(item => item.id === book.id);
+
+            if (existingItem) {
+              // If the item is already in the cart, increment its quantity
+              existingItem.quantity++;
+            } else {
+              // If the item is not in the cart, add it with a quantity of 1
+              cartItems.push({
+                id: book.id,
+                title: book.title,
+                author: book.author,
+                image: book.cover_image,
+                price: book.price,
+                quantity: 1
+              });
+            }
+
+            // Update the cart items in localStorage
+            setCartItems(cartItems);
+
+            // Display the updated cart items in the HTML
+            displayCartItems();
+
+            // ... (rest of your existing code for showing the modal)
+          } else {
+            console.error(`Book with ID ${bookId} not found.`);
+          }
+        })
+        .catch(error => console.error('Error fetching book data:', error));
+    }
+
+    // Function to delete an item from the cart
+    function deleteCartItem(bookId) {
+      const cartItems = getCartItems();
+
+      // Find the index of the item with the specified bookId
+      const index = cartItems.findIndex(item => item.id === bookId);
+
+      if (index !== -1) {
+        // Remove the item from the array
+        cartItems.splice(index, 1);
+
+        // Update the cart items in localStorage
+        setCartItems(cartItems);
+
+        // Display the updated cart items in the HTML
+        displayCartItems();
+      }
+    }
+
+    // Function to display the cart summary
+  function displayCartSummary() {
+    const cartItems = getCartItems();
+    const cartSummaryElement = document.getElementById("cartSummary");
+
+    const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    cartSummaryElement.textContent = `Total: $${total.toFixed(2)}`;
+  }
+
+  // Initial setup: Update cart count and display cart items when the page loads
+  document.addEventListener('DOMContentLoaded', function () {
+    updateCartCount();
+    displayCartItems();
+    displayCartSummary();
+  });
+
+  // Function to display the cart summary
+function displayCartSummary() {
+  const cartItems = getCartItems();
+  const totalItemsElement = document.getElementById("Total-items");
+  const totalPriceElement = document.getElementById("Total-price");
+
+  const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  totalItemsElement.textContent = totalItems.toString();
+  totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+}
+
+
+        </script>
+</body>
+</html>

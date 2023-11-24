@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store Home</title>
+
+      
+    <link rel="stylesheet" href="./stles.css">
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    <body >
+
+        <div id="logoo" style="padding-left: 500px; padding-bottom: 40px; margin:40px 40px 40px 40px ; font-size: 50px;">
+           
+            <a class="navbar-brand fw-bold" style="font-family: 'Times New Roman', Times, serif; background-color: white; width: 900px; color: purple; justify-content: center; align-items: center;" href="#">My Library</a>
+   </div>
+            <nav class="navbar navbar-expand-lg bg-body-secondary p-2 border border-1">
+            <div  class="container-fluid d-flex justify-content-between">
+              
+           
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse hii" id="navbarSupportedContent" style="background-color:rgb(241, 135, 241) ;">
+                <ul class="navbar-nav me-auto ms-auto mb-2 mb-lg-0" style="background-color: rgb(241, 135, 241) ; font-family: Georgia, 'Times New Roman', Times, serif;">
+                  <li class="nav-item p-2 px-4">
+                    <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                  </li>
+                  
+                  <li class="nav-item p-2 px-4 dropdown">
+                    <a class="nav-link " href="./categories.html" >
+                      Categories
+                    </a>
+                    <ul class="dropdown-menu">
+                      <!-- Categories will be dynamically added here using JavaScript -->
+                    </ul>
+                  </li>
+                  
+                  <li class="nav-item p-2 px-4">
+                    <a class="nav-link" href="./cart.html">Cart 
+                  <span style="margin-left: 7px; color: rgb(103, 0, 0);" id="cartCount">&nbsp;0</span>
+
+                    </a>
+                  </li>
+
+                  <li class="nav-item p-2 px-4">
+                    <a class="nav-link" href="./contact.html">Contact</a>
+                  </li>                           
+                 </ul>
+            </div>
+            </div>
+        </div>
+          </nav>
+
+
+       
+
+
+ 
+  
+ <!-- Image Slideshow on Home Page -->
+ <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+      <div class="carousel-item active">
+          <img src="images/placeholder.png" style="width: 100%; height: 70vmin;" class=" " alt="Anna Karenina">
+          <div class="overlay">Online Library  </div>
+      </div>
+      <div class="carousel-item">
+          <img src="images/the_road.jpg" style="width: 100vmax; height: 70vmin;" class=" " alt="The Alchemist">
+          
+          <div class="overlay">Online Library  </div>
+      </div>
+      <!-- Add more slides as needed -->
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<footer class="footer text-center bg-dark-subtle p-4 " style="display: block;">
+  <div class="container" style="display: block;">
+  
+      <div class="col-md-4" style="display: block; padding: 20px 20px 20px 20px; border: 2px solid purple; margin: 20px 20px 20px;">
+        <h5>About Us</h5>
+        <p>Your Website is dedicated to providing quality content and services to our users. Explore and enjoy!</p>
+      </div>
+      <div class="col-md-4" style="display: block;padding: 20px 20px 20px 20px; border: 2px solid purple; margin: 20px 20px 20px;">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled" style="display: block;">
+          <li><a href="index.html" style="display: block;">Home</a></li>
+          <li><a href="categories.html" target="_blank" style="display: block;">Services</a></li>
+          <li><a href="contact.html" target="_blank" style="display: block;">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4" style="display: block;padding: 20px 20px 20px 20px; border: 2px solid purple; margin: 20px 20px 20px;">
+        <h5>Contact Us</h5>
+        <p><strong>Email:</strong> amnak6303@gmail.com</p>
+        <p><strong>Phone:</strong> +92 3171569002</p>
+      </div>
+  
+    <hr class="my-4">
+    <p> 2023 Your Website. All rights reserved. | Designed by <a href="https://yourwebdesigner.com" class="text-light" target="_blank" style="color: black;">Amna Khan </a></p>
+  </div>
+</footer>
+
+  
+
+        <script src="./cartIncrementAndModel.js"></script>
+        <script src="./categorty.js"></script>
+        <script src="./book.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</body>
+</html>
